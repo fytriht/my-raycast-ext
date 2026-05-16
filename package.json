@@ -1,6 +1,6 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
-  "name": "my-ratcast-ext",
+  "name": "my-raycast-ext",
   "title": "Personal Tools",
   "description": "Personal Raycast commands for local automation.",
   "icon": "icon3.png",
