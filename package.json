@@ -1,0 +1,34 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "my-ratcast-ext",
+  "title": "Personal Tools",
+  "description": "Personal Raycast commands for local automation.",
+  "icon": "icon.png",
+  "author": "zhi",
+  "license": "MIT",
+  "categories": [
+    "Productivity"
+  ],
+  "scripts": {
+    "dev": "ray develop",
+    "build": "ray build",
+    "lint": "ray lint",
+    "fix-lint": "ray lint --fix",
+    "publish": "ray publish"
+  },
+  "dependencies": {
+    "@raycast/api": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "typescript": "latest"
+  },
+  "commands": [
+    {
+      "name": "toggle-notch",
+      "title": "Toggle Notch",
+      "description": "Run the local togglenotch command.",
+      "mode": "no-view"
+    }
+  ]
+}
