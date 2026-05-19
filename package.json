@@ -17,13 +17,26 @@
     "publish": "ray publish"
   },
   "dependencies": {
-    "@raycast/api": "latest"
+    "@raycast/api": "latest",
+    "react": "19.0.0"
   },
   "devDependencies": {
     "@types/node": "latest",
     "typescript": "latest"
   },
   "commands": [
+    {
+      "name": "adjust-display-brightness",
+      "title": "Adjust Display Brightness",
+      "description": "Set external display brightness with m1ddc.",
+      "mode": "view"
+    },
+    {
+      "name": "create-empty-docs",
+      "title": "Create Empty Docs",
+      "description": "Create an empty Lark document and open it.",
+      "mode": "no-view"
+    },
     {
       "name": "toggle-notch",
       "title": "Toggle Notch",
