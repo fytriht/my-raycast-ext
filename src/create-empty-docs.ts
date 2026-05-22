@@ -1,4 +1,4 @@
-import { Toast, showToast } from "@raycast/api";
+import { Toast, closeMainWindow, showToast } from "@raycast/api";
 import { spawn } from "node:child_process";
 import { existsSync } from "node:fs";
 
@@ -26,6 +26,7 @@ export default async function Command() {
 
     toast.style = Toast.Style.Success;
     toast.title = "Document created!";
+    await closeMainWindow({ clearRootSearch: true });
   } catch (error) {
     toast.style = Toast.Style.Failure;
     toast.title = "Failed to create document";
