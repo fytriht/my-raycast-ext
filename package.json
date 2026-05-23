@@ -29,8 +29,7 @@
       "name": "caffeinate",
       "title": "Caffeinate",
       "description": "Keep the Mac awake while the menu bar item is visible.",
-      "mode": "menu-bar",
-      "interval": "1m"
+      "mode": "menu-bar"
     },
     {
       "name": "adjust-display-brightness",

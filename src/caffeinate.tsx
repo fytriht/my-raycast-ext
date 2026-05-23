@@ -19,7 +19,6 @@ import { useEffect, useState } from "react";
 
 const execFileAsync = promisify(execFile);
 const caffeinatePath = "/usr/bin/caffeinate";
-const activeStorageKey = "caffeinate-active";
 const pidStorageKey = "caffeinate-pid";
 const startLockPath = join(environment.supportPath, "caffeinate-start.lock");
 const staleLockMs = 10_000;
@@ -149,12 +148,10 @@ async function ensureCaffeinateRunning() {
     const runningPid = await getStoredCaffeinatePid();
 
     if (runningPid) {
-      await LocalStorage.setItem(activeStorageKey, true);
       return runningPid;
     }
 
     const pid = await spawnCaffeinate();
-    await LocalStorage.setItem(activeStorageKey, true);
     await LocalStorage.setItem(pidStorageKey, pid);
     return pid;
   }).finally(() => {
@@ -219,20 +216,10 @@ export default function Command({ launchType }: LaunchProps) {
       setMessage("Checking caffeinate status");
 
       try {
-        const isActive = (await LocalStorage.getItem<boolean>(activeStorageKey)) === true;
-        const shouldBeActive = launchType === LaunchType.UserInitiated || isActive;
         let runningPid = await getStoredCaffeinatePid();
 
-        if (shouldBeActive) {
-          if (runningPid) {
-            await LocalStorage.setItem(activeStorageKey, true);
-          } else {
-            runningPid = await ensureCaffeinateRunning();
-          }
-        } else if (runningPid) {
-          await stopCaffeinate(runningPid);
-          await LocalStorage.removeItem(pidStorageKey);
-          runningPid = undefined;
+        if (!runningPid && launchType === LaunchType.UserInitiated) {
+          runningPid = await ensureCaffeinateRunning();
         }
 
         if (!isMounted) {
@@ -244,7 +231,6 @@ export default function Command({ launchType }: LaunchProps) {
           setStatus("running");
           setMessage(`caffeinate is running with PID ${runningPid}`);
         } else {
-          await LocalStorage.setItem(activeStorageKey, false);
           if (!isMounted) {
             return;
           }
@@ -280,7 +266,6 @@ export default function Command({ launchType }: LaunchProps) {
   async function handleStop() {
     try {
       await stopCaffeinate(pid ?? (await getStoredCaffeinatePid()));
-      await LocalStorage.setItem(activeStorageKey, false);
       await LocalStorage.removeItem(pidStorageKey);
       setPid(undefined);
       setStatus("inactive");
