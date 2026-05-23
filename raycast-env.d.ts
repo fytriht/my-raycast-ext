@@ -13,6 +13,8 @@ type ExtensionPreferences = {}
 declare type Preferences = ExtensionPreferences
 
 declare namespace Preferences {
+  /** Preferences accessible in the `caffeinate` command */
+  export type Caffeinate = ExtensionPreferences & {}
   /** Preferences accessible in the `adjust-display-brightness` command */
   export type AdjustDisplayBrightness = ExtensionPreferences & {}
   /** Preferences accessible in the `create-empty-docs` command */
@@ -22,6 +24,8 @@ declare namespace Preferences {
 }
 
 declare namespace Arguments {
+  /** Arguments passed to the `caffeinate` command */
+  export type Caffeinate = {}
   /** Arguments passed to the `adjust-display-brightness` command */
   export type AdjustDisplayBrightness = {}
   /** Arguments passed to the `create-empty-docs` command */
