@@ -1,11 +1,11 @@
 import {
-  Color,
   Icon,
   LaunchProps,
   LaunchType,
   LocalStorage,
   MenuBarExtra,
   Toast,
+  closeMainWindow,
   environment,
   showHUD,
   showToast,
@@ -239,6 +239,10 @@ export default function Command({ launchType }: LaunchProps) {
           setStatus("inactive");
           setMessage("caffeinate is not running");
         }
+
+        if (launchType === LaunchType.UserInitiated) {
+          await closeMainWindow({ clearRootSearch: true });
+        }
       } catch (error) {
         const errorMessage = getErrorMessage(error);
 
@@ -291,14 +295,7 @@ export default function Command({ launchType }: LaunchProps) {
   const isChecking = status === "checking";
 
   return (
-    <MenuBarExtra
-      isLoading={isChecking}
-      icon={{
-        source: Icon.MugSteam,
-        tintColor: isFailed ? Color.Red : Color.Green,
-      }}
-      tooltip={message}
-    >
+    <MenuBarExtra isLoading={isChecking} icon={Icon.MugSteam} tooltip={message}>
       <MenuBarExtra.Item
         title={isFailed ? "Dismiss" : "Stop Caffeinate"}
         subtitle={message}
