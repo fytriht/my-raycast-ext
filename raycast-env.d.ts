@@ -19,6 +19,8 @@ declare namespace Preferences {
   export type CreateEmptyDocs = ExtensionPreferences & {}
   /** Preferences accessible in the `toggle-notch` command */
   export type ToggleNotch = ExtensionPreferences & {}
+  /** Preferences accessible in the `toggle-night-shift` command */
+  export type ToggleNightShift = ExtensionPreferences & {}
 }
 
 declare namespace Arguments {
@@ -28,5 +30,7 @@ declare namespace Arguments {
   export type CreateEmptyDocs = {}
   /** Arguments passed to the `toggle-notch` command */
   export type ToggleNotch = {}
+  /** Arguments passed to the `toggle-night-shift` command */
+  export type ToggleNightShift = {}
 }
 

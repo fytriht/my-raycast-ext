@@ -42,6 +42,12 @@
       "title": "Toggle Notch",
       "description": "Run the local togglenotch command.",
       "mode": "no-view"
+    },
+    {
+      "name": "toggle-night-shift",
+      "title": "Toggle Night Shift",
+      "description": "Run /usr/local/bin/nightshift toggle.",
+      "mode": "no-view"
     }
   ]
 }
