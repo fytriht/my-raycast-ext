@@ -26,6 +26,12 @@
   },
   "commands": [
     {
+      "name": "paste-clipboard-as-file",
+      "title": "Paste Clipboard as File",
+      "description": "Paste clipboard text or rich text as an appendix.txt plain text file.",
+      "mode": "no-view"
+    },
+    {
       "name": "adjust-display-brightness",
       "title": "Adjust Display Brightness",
       "description": "Set external display brightness with m1ddc.",

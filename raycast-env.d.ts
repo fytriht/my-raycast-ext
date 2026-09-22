@@ -13,6 +13,8 @@ type ExtensionPreferences = {}
 declare type Preferences = ExtensionPreferences
 
 declare namespace Preferences {
+  /** Preferences accessible in the `paste-clipboard-as-file` command */
+  export type PasteClipboardAsFile = ExtensionPreferences & {}
   /** Preferences accessible in the `adjust-display-brightness` command */
   export type AdjustDisplayBrightness = ExtensionPreferences & {}
   /** Preferences accessible in the `create-empty-docs` command */
@@ -24,6 +26,8 @@ declare namespace Preferences {
 }
 
 declare namespace Arguments {
+  /** Arguments passed to the `paste-clipboard-as-file` command */
+  export type PasteClipboardAsFile = {}
   /** Arguments passed to the `adjust-display-brightness` command */
   export type AdjustDisplayBrightness = {}
   /** Arguments passed to the `create-empty-docs` command */
